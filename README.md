@@ -20,7 +20,10 @@ int main(int argc, char** argv) {
 This project is not perfect, there may be bugs, feel free to post an issue with details on how to recreate the bug you are experiencing to make the debugging process quick and effective.
 
 ## Documentation
-For flexibility ccli accepts targets as (void\*), what does this mean? For string-types such as `char*, const char*` you must pass the pointer as the target, for all over primative data-types you must pass them as address-of (&). User-Defined typedefs may work so long as they are not created via dynamic allocation.
+For flexibility ccli accepts `option` targets as (void\*), what does this mean? For string-types such as `char*, const char*` you must pass the pointer as the target, for all over primative data-types you must pass them as address-of (&).
+
+For `flag` targets they must be address-of integers, this is a design choice as while there exists stdbool.h it is basic computer science principle that 0 - False and 1 - True, this is true for conditionals in C, non-zero values are resolved as True while the converse is False.
+
 ```c
 #include "cli.h"
 // ./program -o output.txt -t 25 -d 3.14
