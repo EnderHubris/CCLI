@@ -6,8 +6,12 @@ int main(int argc, char** argv) {
 
     App app = createApp("My Awesome Program");
 
-    app.AddFlag("-v", "--verbose", "Show Full Output", &verbose, &app);
-    app.AddOption("-o", "--output", "Output File", oFileName, &app);
+    app.AddFlag("-v", "--verbose", "Show Full Output", F_INTEGER, &verbose, &app);
+    app.AddOption("-o", "--output", "Output File", O_STRING, oFileName, &app);
 
     parseCLI(&app, argc, argv);
+
+    if (verbose == 1) {
+        printf("Hello Verbose\n");
+    }
 }
