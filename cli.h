@@ -68,14 +68,14 @@ struct App {
 // lacking but multiple options attached to the same target seems
 // unneccessary
 static int matchingOptions(Option* a, Option* b) {
-    return 0;
-    // return a && b && (a->target == b->target);
+    if (!a || !b) return 0;
+    if (!a->target || !b->target) return 0;
+    return a->target == b->target;
 }
 
 static int matchingFlags(Flag* a, Flag* b) {
     if (!a || !b) return 0;
     if (!a->target || !b->target) return 0;
-
     return a->target == b->target;
 }
 
@@ -125,7 +125,7 @@ static void AddFlag(
     if (
         app->optCount > 0 &&
         Contains(
-            (void **)&app->flags,   // collection to iterate
+            (void **)app->flags,   // collection to iterate
             app->flagCount,         // collection size
             tFlag,                  // collection element type
             nFlag                   // new flag we want to add
@@ -186,7 +186,7 @@ static void AddOption(
     if (
         app->optCount > 0 &&
         Contains(
-            (void **)&app->options, // collection to iterate
+            (void **)app->options, // collection to iterate
             app->optCount,          // collection size
             tOption,                // collection element type
             nOpt                    // new option we want to add
