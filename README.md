@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     App app = createApp("My Awesome Program");
 
     app.AddFlag("-v", "--verbose", "Show Full Output", F_INTEGER, &verbose, &app);
-    app.AddOption("-o", "--output", "Output File", O_STRING, oFileName, &app);
+    app.AddOption("-o", "--output", "Output File", O_STRING, &oFileName, &app);
 
     parseCLI(&app, argc, argv);
 
