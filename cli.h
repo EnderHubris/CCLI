@@ -263,7 +263,13 @@ static void OptionErr(Option* option) {
 // Public Methods
 
 App createApp(const char* desc) {
-    App app = { desc, NULL, 0, NULL, 0 };
+    App app = {
+        desc,
+        NULL, 0,
+        NULL, 0,
+        NULL,
+        NULL
+    };
    
     // connect methods to function ptrs 
     app.AddFlag = AddFlag;

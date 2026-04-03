@@ -1,6 +1,6 @@
 TARGET = awesome_app
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -Wextra
 
 all: build
 	@echo "Running program 1"
